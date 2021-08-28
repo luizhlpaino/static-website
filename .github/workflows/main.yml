@@ -68,8 +68,8 @@ jobs:
       - Test-Artifact
       - Test-Website
     steps:
-      #- name: checkout repo
-      #  uses: actions/checkout@v2
+      - name: checkout repo
+        uses: actions/checkout@v2
       
       - name: download artifact
         uses: actions/download-artifact@v2
