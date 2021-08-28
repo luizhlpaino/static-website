@@ -58,6 +58,6 @@ jobs:
 
       - name: test application
         run: |
-          gatsby serve
-          curl "http://localhost:9000"
-          grep -q "Gatsby" ./public/index.html
+          gatsby serve &
+          sleep 3
+          curl "http://localhost:9000" | grep -q "Gatsby"
