@@ -1,10 +1,11 @@
+image: node
 stages: 
   - build
   - test
+  - deploy
 
 build website:
-  stage: build
-  image: node
+  stage: build  
   script:
     - npm install
     - npm install -g gatsby-cli
@@ -20,11 +21,16 @@ test artifact:
     - grep -q "Gatsby" ./public/index.html
 
 test website:
-  stage: test
-  image: node
+  stage: test  
   script:
     - npm install
     - npm install -g gatsby-cli
     - gatsby serve &
     - sleep 3
     - curl "http://localhost:9000" | tac | tac | grep -q "Gatsby"
+
+deploy website:
+  stage: deploy
+  script:  
+    - npm install --global surge
+    - surge --project ./public --domain lgm-gitlab-static.surge.sh

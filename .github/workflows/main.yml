@@ -61,3 +61,24 @@ jobs:
           gatsby serve &
           sleep 3
           curl "http://localhost:9000" | tac | tac | grep -q "Gatsby"
+
+  Deploy-Website:
+    runs-on: ubuntu-latest
+    needs:
+      - Test-Artifact
+      - Test-Website
+    steps:
+      #- name: checkout repo
+      #  uses: actions/checkout@v2
+      
+      - name: download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: public
+          path: ./public/
+        
+      - name: install surge depedency
+        run: npm install --global surge
+
+      - name: publish production build
+        run: surge --project ./public/ --domain lgm-github-static.surge.sh
