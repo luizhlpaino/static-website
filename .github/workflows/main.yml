@@ -82,3 +82,4 @@ jobs:
 
       - name: publish production build
         run: surge --project ./public/ --domain lgm-github-static.surge.sh
+        
