@@ -42,19 +42,19 @@ jobs:
     container: node
     needs: Build-Website
     steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+
       - name: recover artifact
         uses: actions/download-artifact@v2
         with:
           name: public
-          path: ./public/
+          path: ./public/            
 
       - name: install dependencies
-        run: npm install          
-          
-      - run: ls
-
-      - name: install gatsby cli
-        run: npm install -g gatsby-cli
+        run: |
+          npm install                          
+          npm install -g gatsby-cli
 
       - name: test application
         run: |
