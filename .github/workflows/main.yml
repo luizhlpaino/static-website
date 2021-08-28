@@ -3,6 +3,7 @@ on: [push]
 jobs:
   Build-Website:
     runs-on: ubuntu-latest
+    container: node
     steps:
       - name: checkout repo files
         uses: actions/checkout@v2
