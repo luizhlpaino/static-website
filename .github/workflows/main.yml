@@ -49,9 +49,12 @@ jobs:
           path: ./public/
 
       - name: install dependencies
-        run: |
-          npm install
-          npm install -g gatsby-cli
+        run: npm install          
+          
+      - run: ls
+
+      - name: install gatsby cli
+        run: npm install -g gatsby-cli
 
       - name: test application
         run: |
