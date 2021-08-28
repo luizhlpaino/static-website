@@ -1,0 +1,19 @@
+name: Build Website
+on: [push]
+jobs:
+  Build-Website:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo files
+        uses: actions/checkout@v2
+
+      - run: ls
+
+      - name: install dependencies
+        run: npm install
+
+      - name: install gatsby cli globally
+        run: npm install -g gatsby-cli
+
+      - name: build project with gatsby cli
+        run: gatsby build
