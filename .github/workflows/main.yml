@@ -22,3 +22,18 @@ jobs:
         with:
           name: public
           path: ./public
+
+  Test-Artifact:
+    runs-on: ubuntu-latest
+    needs: Build-Website
+    steps:
+      - name: recover artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: public
+
+      - name: test build
+        run: |
+          grep "Gatsby" ./public/index.html
+          grep "Gata1sf56a1s56fas5sby" ./public/index.html
+
