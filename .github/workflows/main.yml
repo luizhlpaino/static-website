@@ -4,15 +4,15 @@ jobs:
   Build-Website:
     runs-on: ubuntu-latest
     container: node
-    steps:
-      - run: echo "token - ${{secrets.SURGE_TOKEN}}"
+    steps:      
       - name: checkout repo files
         uses: actions/checkout@v2
 
       - name: install dependencies
-        run: |
-          npm install
-          npm install -g gatsby-cli
+        run: npm install
+
+      - name: install gatsby cli
+        run: npm install -g gatsby-cli
 
       - name: build project with gatsby cli
         run: gatsby build
@@ -53,9 +53,10 @@ jobs:
           path: ./public/            
 
       - name: install dependencies
-        run: |
-          npm install
-          npm install -g gatsby-cli
+        run: npm install
+          
+      - name: install gatsby cli
+        run: npm install -g gatsby-cli
 
       - name: test application
         run: |
