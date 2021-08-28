@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     container: node
     steps:
+      - run: echo "token - ${{secrets.SURGE_TOKEN}}"
       - name: checkout repo files
         uses: actions/checkout@v2
 
@@ -81,4 +82,4 @@ jobs:
         run: npm install --global surge
 
       - name: publish production build
-        run: surge --project ./public/ --domain lgm-github-static.surge.sh 
+        run: surge --project ./public/ --token ${{secrets.SURGE_TOKEN}} --domain lgm-github-static.surge.sh 
