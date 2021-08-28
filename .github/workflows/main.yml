@@ -8,8 +8,6 @@ jobs:
       - name: checkout repo files
         uses: actions/checkout@v2
 
-      - run: ls
-
       - name: install dependencies
         run: npm install
 
@@ -18,3 +16,9 @@ jobs:
 
       - name: build project with gatsby cli
         run: gatsby build
+
+      - name: artifact public folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: public
+          path: ./public
