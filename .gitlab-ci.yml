@@ -40,4 +40,4 @@ test production website:
   stage: deploy test
   image: alpine
   script:
-    - curl "https://lgm-gitlab-static.surge.sh" | tac | tac | grep -q "Gatsby"
+    - curl "http://lgm-gitlab-static.surge.sh/" | tac | tac | grep -q "Gatsby"
