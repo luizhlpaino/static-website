@@ -3,6 +3,7 @@ stages:
   - build
   - test
   - deploy
+  - deploy test
 
 build website:
   stage: build  
@@ -34,3 +35,9 @@ deploy website:
   script:  
     - npm install --global surge
     - surge --project ./public --domain lgm-gitlab-static.surge.sh
+
+test production website:
+  stage: deploy test
+  image: alpine
+  script:
+    - curl "https://lgm-gitlab-static.surge.sh" | tac | tac | grep -q "Gatsby"
