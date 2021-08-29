@@ -40,4 +40,5 @@ test production website:
   stage: deploy test
   image: alpine
   script:
+    - apk --no-cache add curl
     - curl "http://lgm-gitlab-static.surge.sh/" | tac | tac | grep -q "Gatsby"
