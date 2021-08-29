@@ -84,3 +84,9 @@ jobs:
 
       - name: publish production build
         run: surge --project ./public/ --token ${{secrets.SURGE_TOKEN}} --domain lgm-github-static.surge.sh 
+
+  Test-Production-Website:
+    runs-on: ubuntu-latest
+    needs: Deploy-Website
+    steps:
+      - run: curl "http://lgm-github-static.surge.sh" | grep -q "Gatsby"
