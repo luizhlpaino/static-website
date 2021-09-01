@@ -1,6 +1,6 @@
 name: Build Website
 on: [push]
-jobs:
+jobs: 
   Build-Website:
     runs-on: ubuntu-latest
     container: node
